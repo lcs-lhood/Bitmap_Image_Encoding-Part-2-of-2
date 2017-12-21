@@ -20,12 +20,25 @@ import PlaygroundSupport
 
 // Copy your encoded image string here...
 let encodedBitmap = """
-1,3,1
-4,1
-1,4
-0,1,3,1
-0,1,3,1
-1,4
+w5,w5,w5,w5
+w7,b6,w7
+w5,b3,w1,r2,w1,b3,w5
+w4,b2,w3,r2,w3,b2,w4
+w3,b2,w4,r2,w4,b2,w3
+w3w,b1b,r1r,w2w,r2,w2,r2,w2,1w,2w
+w2,b2,r1,w2,r1,w4,r1,w2,r2,1b,w2
+w2,b1,w1,r5,w2,r5,w1,b1,w2
+w2,b1,r3,w9,r2,b1,w2
+w2,b1,r2,b5,b5,r2,b1,w2
+w2,b4,w2,b1,w2,b1,w2,b4,w2
+w3,b3,w2,b1,w2,b1,w2,b3,w4
+w3,b3,w2,b1,w2,1b,2w,b3,w3
+w4,b2,w6,w2,b2
+w5,b2,w6,b2,w5
+w5,b5,b5
+w5,w5,w5,w5
+w5,w5,w5,w5
+
 """
 
 // Make a canvas
@@ -53,6 +66,8 @@ var drawThisManyPixels = 0
 // Iterate over each character in the encoded bitmap string
 for character in encodedBitmap {
     
+    print("current character is \(character)")
+    
     // Set colour at start of a line
     if character == "0" {
         
@@ -76,6 +91,15 @@ for character in encodedBitmap {
 
         }
         
+        
+    } else if character == "w" {
+        canvas.fillColor = Color.white
+        
+    } else if character == "b" {
+        canvas.fillColor = Color.black
+        
+    } else if character == "r" {
+        canvas.fillColor = Color.red
     } else if character == "\n" {
         
         // We are on a new line, so reduce the vertical position
